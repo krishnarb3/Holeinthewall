@@ -11,16 +11,31 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
 {
-    DrawingTheBall ball;
+    //DrawingTheBall ball;
+    MySurface surface;
     ArrayList<View> viewarray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        ball = new DrawingTheBall(this);
+        //ball = new DrawingTheBall(this);
+        surface = new MySurface(this);
         setContentView(R.layout.activity_main);
     }
 
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        surface.onPause();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        surface.onResume();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
