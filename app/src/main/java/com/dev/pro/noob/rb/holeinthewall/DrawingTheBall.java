@@ -15,7 +15,7 @@ import android.view.View;
 /**
  * Created by RB on 21-07-2015.
  */
-/*public class DrawingTheBall extends View
+public class DrawingTheBall extends View
 {
     Integer x,y;
     static Boolean movingup = true,movingdown = false,movingright=true,movingleft=false;
@@ -56,7 +56,7 @@ import android.view.View;
         Rect block[];
         block = new Rect[10];
         for(int i=1;i<9;i++)
-        block[i] = new Rect();
+            block[i] = new Rect();
 
         for(int j=0;j<2;j++)
         {
@@ -68,14 +68,14 @@ import android.view.View;
 
             }
         }
-        /*if(visibility[1])
-        block[1].set(150,650,300,725);
-        if(visibility[2])
-        block[2].set(750,650,900,725);
-        if(visibility[3])
-        block[3].set(550,650,700,725);
-        if(visibility[4])
-        block[4].set(350,650,500,725);
+        //if(visibility[1])
+        //block[1].set(150,650,300,725);
+        //if(visibility[2])
+        //block[2].set(750,650,900,725);
+        //if(visibility[3])
+        //block[3].set(550,650,700,725);
+        //if(visibility[4])
+        //block[4].set(350,650,500,725);
         Paint dullblack = new Paint();
         dullblack.setColor(Color.DKGRAY);
         dullblack.setStyle(Paint.Style.FILL);
@@ -85,7 +85,7 @@ import android.view.View;
         ball = BitmapFactory.decodeResource(getResources(),R.drawable.ball);
         spacepaddle = BitmapFactory.decodeResource(getResources(),R.drawable.spacepaddle);
         for(int i=1;i<=8;i++)
-        canvas.drawRect(block[i], white);
+            canvas.drawRect(block[i], white);
         canvas.drawBitmap(ball, x-ball.getWidth()/2, y-ball.getHeight()/2, new Paint());
         canvas.drawBitmap(spacepaddle,400,canvas.getHeight()-70,new Paint());
 
@@ -172,4 +172,3 @@ import android.view.View;
         invalidate();
     }
 }
-*/
