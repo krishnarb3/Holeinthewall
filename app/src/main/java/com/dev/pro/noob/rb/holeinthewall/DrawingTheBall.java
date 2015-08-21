@@ -1,3 +1,4 @@
+/*
 package com.dev.pro.noob.rb.holeinthewall;
 
 import android.content.Context;
@@ -12,9 +13,11 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+*/
 /**
  * Created by RB on 21-07-2015.
- */
+ *//*
+
 public class DrawingTheBall extends View
 {
     Integer x,y;
@@ -172,3 +175,4 @@ public class DrawingTheBall extends View
         invalidate();
     }
 }
+*/

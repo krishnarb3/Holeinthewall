@@ -229,12 +229,12 @@ public class MySurface extends SurfaceView implements Runnable
                     else
                     Log.d("hel","Bad mobile");
                     flag++;
-                }
+                }/*
                 else if(flag<=10)
                 {
                     Log.d("hel",String.valueOf(System.currentTimeMillis()));
                     flag++;
-                }
+                }*/
                     animthread.sleep(fr);
 //                  animthread.join(16);
 //                canvas = holder.lockCanvas();
@@ -242,7 +242,7 @@ public class MySurface extends SurfaceView implements Runnable
 //
 //                holder.unlockCanvasAndPost(canvas);
                 if(i%60==0)
-                Log.d("hel",String.valueOf(i)+"Destroying");
+                //Log.d("hel",String.valueOf(i)+"Destroying");
                 i++;
             } catch (InterruptedException e)
             {

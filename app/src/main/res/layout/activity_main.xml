@@ -5,8 +5,8 @@
                 android:background="@drawable/seawallpaper"
                 tools:context=".MainActivity">
 
-<com.dev.pro.noob.rb.holeinthewall.DrawingTheBall
+    <com.dev.pro.noob.rb.holeinthewall.MySurface
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mysurfaceview"/>
+    android:id="@+id/mysurfaceview"></com.dev.pro.noob.rb.holeinthewall.MySurface>
 </RelativeLayout>
