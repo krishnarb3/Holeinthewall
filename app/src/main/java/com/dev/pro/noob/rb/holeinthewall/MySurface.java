@@ -6,17 +6,25 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TimeUtils;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 /**
  * Created by RB on 8/18/2015.
  */
 public class MySurface extends SurfaceView implements Runnable
 {
+    long i=0;
+    int fr=16;
+    long deltatime;
+    Integer flag=0;
     Integer x,y;
     static Boolean isRunning=true;
     static Boolean movingup = true,movingdown = false,movingright=true,movingleft=false;
@@ -41,6 +49,7 @@ public class MySurface extends SurfaceView implements Runnable
     {
         super(context, attrs);
         holder = getHolder();
+        holder.setFormat(PixelFormat.TRANSPARENT);
         for(int i=0;i<10;i++)
             visibility[i]=true;
         animthread = new Thread(this);
@@ -69,8 +78,15 @@ public class MySurface extends SurfaceView implements Runnable
         {
             if (!holder.getSurface().isValid())
                 continue;
+            if(flag==0)
+            {
+                deltatime = System.currentTimeMillis();
+                Log.d("hel",String.valueOf(deltatime));
+                flag=1;
+            }
 
             Canvas canvas = holder.lockCanvas();
+            canvas.drawRGB(124,124,124);
             if (canvas != null)
             {
                 Rect paddle = new Rect();
@@ -114,11 +130,11 @@ public class MySurface extends SurfaceView implements Runnable
                 white.setColor(Color.WHITE);
                 white.setStyle(Paint.Style.FILL);
                 ball = BitmapFactory.decodeResource(getResources(), R.drawable.ball);
-                spacepaddle = BitmapFactory.decodeResource(getResources(), R.drawable.spacepaddle);
+                //spacepaddle = BitmapFactory.decodeResource(getResources(), R.drawable.spacepaddle);
                 for (int i = 1; i <= 8; i++)
                     canvas.drawRect(block[i], white);
                 canvas.drawBitmap(ball, x - ball.getWidth() / 2, y - ball.getHeight() / 2, new Paint());
-                canvas.drawBitmap(spacepaddle, 400, canvas.getHeight() - 70, new Paint());
+//                canvas.drawBitmap(spacepaddle, 400, canvas.getHeight() - 70, new Paint());
 
                 for (int i = 1; i <= 8; i++)
                 {
@@ -204,12 +220,33 @@ public class MySurface extends SurfaceView implements Runnable
             }
             try
             {
-
-                animthread.join(200);
-                Log.d(TAG,"Destroying");
+                if(flag==1)
+                {
+                    Log.d("hel",String.valueOf(System.currentTimeMillis()));
+                    deltatime = System.currentTimeMillis()-deltatime;
+                    if(deltatime>=0)
+                    fr = 16- (int)deltatime;
+                    else
+                    Log.d("hel","Bad mobile");
+                    flag++;
+                }
+                else if(flag<=10)
+                {
+                    Log.d("hel",String.valueOf(System.currentTimeMillis()));
+                    flag++;
+                }
+                    animthread.sleep(fr);
+//                  animthread.join(16);
+//                canvas = holder.lockCanvas();
+//                canvas.drawRGB(0,0,0);
+//
+//                holder.unlockCanvasAndPost(canvas);
+                if(i%60==0)
+                Log.d("hel",String.valueOf(i)+"Destroying");
+                i++;
             } catch (InterruptedException e)
             {
-                Log.d(TAG,e+"");
+                Log.d("hel",e+"");
             }
         }
 
